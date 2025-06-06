@@ -1,0 +1,26 @@
+import hashlib
+import secrets
+
+def generate_salt(length: int = 16) -> str:
+    """Generates a cryptographic salt for password hashing."""
+    return secrets.token_hex(length)
+
+def hash_password(password: str, salt: str) -> str:
+    """Hashes the password using SHA-256 with a salt."""
+    combined = password + salt  # Combine password and salt
+    return hashlib.sha256(combined.encode()).hexdigest()
+
+def verify_password(password: str, salt: str, hashed_value: str) -> bool:
+    """Verifies if a password matches the stored hash."""
+    return hash_password(password, salt) == hashed_value
+
+# Example usage:
+if __name__ == "__main__":
+    password = "SecurePassword123"
+    salt = generate_salt()
+    hashed_password = hash_password(password, salt)
+
+    print(f"Original Password: {password}")
+    print(f"Salt: {salt}")
+    print(f"Hashed Password: {hashed_password}")
+    print(f"Verification Passed: {verify_password(password, salt, hashed_password)}")  # Expected Output: True
