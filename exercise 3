@@ -1,0 +1,13 @@
+def filter_negatives(numbers: list[int]) -> list[int]:
+    """
+    Removes negative numbers from the list using a loop.
+    """
+    filtered_numbers = []
+    for num in numbers:
+        if num >= 0:  # Check if number is non-negative
+            filtered_numbers.append(num)  # Add to the new list
+    return filtered_numbers
+
+# Example usage:
+numbers_list = [-5, 3, -1, 7, -8, 2, 0, -3, 6]
+print(filter_negatives(numbers_list))  # Expected output: [3, 7, 2, 0, 6]
