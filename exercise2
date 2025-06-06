@@ -1,0 +1,21 @@
+import numpy as np
+
+def swap(coords: np.ndarray) -> np.ndarray:
+    """
+    Flips x and y coordinates in the bounding box array.
+    """
+    new_coords = coords.copy()  # Create a copy to avoid modifying the original
+    new_coords[:, [0, 1, 2, 3]] = new_coords[:, [1, 0, 3, 2]]  # Correctly swap x and y coordinates
+    return new_coords
+
+# Example usage:
+coords = np.array([
+    [10, 5, 15, 6, 0],
+    [11, 3, 13, 6, 0],
+    [5, 3, 13, 6, 1],
+    [4, 4, 13, 6, 1],
+    [6, 5, 13, 16, 1]
+])
+
+swapped_coords = swap(coords)
+print(swapped_coords)
