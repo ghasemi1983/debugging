@@ -1,7 +1,7 @@
-def id_to_fruit(fruit_id: int, fruits: Set[str]) -> str:
-    fruit_list = sorted(fruits)  # Convert set to a sorted list
-    if 0 <= fruit_id < len(fruit_list):
-        return fruit_list[fruit_id]
+from typing import List
+def id_to_fruit(fruit_id: int, fruits: list[str]) -> str:
+       if 0 <= fruit_id < len(fruits):
+        return fruits[fruit_id]
     raise RuntimeError(f"Fruit with id {fruit_id} does not exist")
 def swap(coords: np.ndarray) -> np.ndarray:
     swapped = coords.copy()  # Avoid modifying the original array
